@@ -4,6 +4,7 @@ import './globals.css';
 export const metadata: Metadata = {
   title: { default: 'コーヒーNOTE', template: '%s | コーヒーNOTE' },
   description: 'コーヒーの淹れ方からおすすめ豆・カフェグッズまで徹底紹介',
+  verification: { google: 'xpdiFRYHloMJxfhCT-IMD08p5na4v9WUqvPY9OrDsHs' },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
