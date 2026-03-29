@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: { default: 'キャリアNOTE', template: '%s | キャリアNOTE' },
-  description: '転職・スキルアップ・キャリア設計に役立つ情報を発信',
+  title: { default: 'コーヒーNOTE', template: '%s | コーヒーNOTE' },
+  description: 'コーヒーの淹れ方からおすすめ豆・カフェグッズまで徹底紹介',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -18,8 +18,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header className="site-header">
           <div className="header-inner">
             <a href="/" className="site-logo">
-              <span className="logo-mark">🚀</span>
-              <span className="logo-text">キャリアNOTE</span>
+              <span className="logo-mark">☕</span>
+              <span className="logo-text">コーヒーNOTE</span>
             </a>
             <nav className="site-nav">
               <a href="/">ホーム</a>
@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         <footer className="site-footer">
           <div className="footer-inner">
-            <p>© 2025 キャリアNOTE</p>
+            <p>© 2025 コーヒーNOTE</p>
             <p className="footer-note">本サイトはアフィリエイト広告を含みます</p>
           </div>
         </footer>
