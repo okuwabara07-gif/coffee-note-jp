@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://coffee-note-jp.vercel.app/sitemap.xml
+Sitemap: https://okuwabara07-gif.github.io/coffee-note-jp/sitemap.xml
