@@ -7,9 +7,9 @@ const AMAZON_TRACKING_ID = process.env.AMAZON_TRACKING_ID || 'haircolorab22-22';
 const RAKUTEN_AFFILIATE_ID = process.env.RAKUTEN_AFFILIATE_ID || '5253b9ed.08f9d938.5253b9ee.e71aefe8';
 const MOSHIMO_ID = '1184522';
 
-const SITE_NAME = 'コーヒーNOTE';
-const TOPIC = 'コーヒー・コーヒーグッズ・カフェ';
-const CRITERIA = '味・香り・コスパ・使いやすさ・品質';
+const SITE_NAME = 'coffee note';
+const TOPIC = 'ヘアカラー・白髪染め・セルフカラー';
+const CRITERIA = '染まりやすさ・色持ち・ダメージ・コスパ・使いやすさ';
 
 function moshimoAmazonLink(keyword) {
   const searchUrl = encodeURIComponent(`https://www.amazon.co.jp/s?k=${encodeURIComponent(keyword)}&tag=${AMAZON_TRACKING_ID}`);
@@ -35,19 +35,9 @@ function request(options, body) {
 }
 
 
-async function getUnsplashImage(keyword) {
-  const queries = [
-    encodeURIComponent(keyword),
-    encodeURIComponent(keyword.replace(/おすすめ|ランキング|比較|TOP5/g, '').trim()),
-    'beauty'
-  ];
-  for (const q of queries) {
-    try {
-      const url = `https://source.unsplash.com/800x450/?${q}`;
-      return url;
-    } catch(e) {}
-  }
-  return 'https://source.unsplash.com/800x450/?beauty,cosmetics';
+function getUnsplashImage(keyword) {
+  const seed = keyword.split('').reduce((a,c)=>a+c.charCodeAt(0),0);
+  return `https://picsum.photos/seed/${Math.abs(seed)}/800/450`;
 }
 
 
@@ -182,7 +172,7 @@ description: "${keyword}のおすすめ商品をランキング形式で徹底�
 
 ## アイキャッチ画像（記事冒頭）
 
-![${keyword}のイメージ](https://source.unsplash.com/800x450/?${encodeURIComponent(keyword.replace(/[\u3000-\u9fff]/g, '').trim() || 'beauty')})
+![${keyword}のイメージ](${`https://picsum.photos/seed/${Math.abs(keyword.split('').reduce((a,c)=>a+c.charCodeAt(0),0))}/800/450`})
 
 ## 結論：迷ったらこれを買えば間違いなし
 
@@ -223,7 +213,7 @@ ${CRITERIA.split('・').map(c => `- **${c}**：（評価の観点を20文字で�
 
 ## 第1位への画像
 
-![${keyword} 第1位](https://source.unsplash.com/800x400/?${encodeURIComponent(keyword.replace(/[\u3000-\u9fff]/g, '').trim() || 'product')},review)
+![${keyword} 第1位](${`https://picsum.photos/seed/${Math.abs((keyword+'1').split('').reduce((a,c)=>a+c.charCodeAt(0),0))}/800/400`})
 
 ## 第1位：[商品名A]｜総合評価★★★★★
 
@@ -317,7 +307,7 @@ A：（50文字で回答）
 
 ## 参考画像
 
-![関連画像](https://source.unsplash.com/800x400/?beauty,product,review)
+![関連画像](https://picsum.photos/seed/42/800/400)
 
 ## まとめ：結局どれを買えばいいの？
 
