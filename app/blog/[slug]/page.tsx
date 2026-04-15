@@ -14,8 +14,8 @@ export async function generateMetadata({ params }: any) {
   return { title: post.title, description: post.excerpt }
 }
 
-function img(kw: string, w: number, h: number) {
-  const seed = Math.abs(kw.split('').reduce((a:number,c:string)=>a+c.charCodeAt(0),0))
+function img(kw: string|undefined, w: number, h: number) {
+  const seed = Math.abs((kw||'').split('').reduce((a:number,c:string)=>a+c.charCodeAt(0),0))
   return `https://picsum.photos/seed/${seed}/${w}/${h}`
 }
 
